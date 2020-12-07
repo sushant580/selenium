@@ -17,9 +17,7 @@ def xpath(add):
 
 
 runingCodePath = os.path.split(os.path.realpath(__file__))[0]
-
 firefoxPath = os.path.join(runingCodePath, r"geckodriver-v0.27.0-win32\geckodriver.exe")
-print(firefoxPath)
 
 while True:
     try:
@@ -27,12 +25,12 @@ while True:
         options = Options()
         options.headless = True
         profile.set_preference("media.volume_scale", "0.0")
-        binary = FirefoxBinary(os.path.join(runingCodePath, r"Mozilla Firefox\firefox.exe"))
-        print(binary)
-        driver = webdriver.Firefox(firefox_binary=binary, executable_path=firefoxPath, options=options, firefox_profile=profile, service_log_path=os.path.devnull)
-
-        driver.get('https://indiandealin.wordpress.com/')
-        xpath('//iframe[@class="youtube-player"]')
+        b_path = os.path.join(runingCodePath, r"Mozilla Firefox\firefox.exe")
+        binary = FirefoxBinary(b_path)
+        driver = webdriver.Firefox(firefox_binary=binary, executable_path=firefoxPath)
+        # driver = webdriver.Firefox(firefox_binary=binary, executable_path=firefoxPath, options=options, firefox_profile=profile, service_log_path=os.path.devnull)
+        driver.get('https://www.youtube.com/watch?v=nqzYfC93GuA&list=PLZ7TrNqkDzINrWIbJXUmIytq_AYvalYzj')
+        xpath('//button[@aria-label="Play"]')
         for i in range(1, 60):
             print("running for last " + str(i) + " minutes")
             time.sleep(60)
@@ -40,17 +38,3 @@ while True:
     except Exception as e:
         print(e)
         time.sleep(600)
-
-
-    # sound but no video
-    # driver = webdriver.Firefox(executable_path="./bin/geckodriver", options=options)#, firefox_profile=profile)
-
-    # no sound and no video
-    # driver = webdriver.Firefox(executable_path="./geckodriver", options=options, firefox_profile=profile)
-
-    # video but no sound
-    # driver = webdriver.Firefox(executable_path="./bin/geckodriver", firefox_profile=profile)
-
-    # video and sound
-    # driver = webdriver.Firefox(executable_path="./bin/geckodriver")
-
