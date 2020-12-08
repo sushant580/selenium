@@ -29,7 +29,8 @@ while True:
         binary = FirefoxBinary(b_path)
         driver = webdriver.Firefox(firefox_binary=binary, executable_path=firefoxPath, service_log_path=os.path.devnull, options = options)
         # driver = webdriver.Firefox(firefox_binary=binary, executable_path=firefoxPath, options=options, firefox_profile=profile, service_log_path=os.path.devnull)
-        driver.get('https://www.youtube.com/watch?v=nqzYfC93GuA&list=PLZ7TrNqkDzINrWIbJXUmIytq_AYvalYzj')
+        url = "https://www.youtube.com/watch?v=jzJ5T_XAsh8&list=PLZ7TrNqkDzINrWIbJXUmIytq_AYvalYzj"
+        driver.get(url)
         xpath('//button[@aria-label="Play"]')
         for i in range(1, 60):
             print("running for last " + str(i) + " minutes")
