@@ -27,7 +27,7 @@ while True:
         profile.set_preference("media.volume_scale", "0.0")
         b_path = os.path.join(runingCodePath, r"Mozilla Firefox\firefox.exe")
         binary = FirefoxBinary(b_path)
-        driver = webdriver.Firefox(firefox_binary=binary, executable_path=firefoxPath, service_log_path=os.path.devnull)
+        driver = webdriver.Firefox(firefox_binary=binary, executable_path=firefoxPath, service_log_path=os.path.devnull, options = options)
         # driver = webdriver.Firefox(firefox_binary=binary, executable_path=firefoxPath, options=options, firefox_profile=profile, service_log_path=os.path.devnull)
         driver.get('https://www.youtube.com/watch?v=nqzYfC93GuA&list=PLZ7TrNqkDzINrWIbJXUmIytq_AYvalYzj')
         xpath('//button[@aria-label="Play"]')
