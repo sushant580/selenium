@@ -1,7 +1,7 @@
 import time
 from selenium import webdriver
 import os
-from selenium.webdriver.firefox.options import Options
+# from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 
 
