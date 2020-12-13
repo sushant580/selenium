@@ -40,7 +40,7 @@ while True:
         xpath('//a[@href="https://www.youtube.com/c/foodartbyginny/search"]')
         xpath('//paper-tab[contains(.,"Playlists")]')
         xpath('//a[@title="All in One"]')
-        for i in range(1, 60):
+        for i in range(1, 180):
             print("running for last " + str(i) + " minutes")
             time.sleep(60)
         driver.quit()
