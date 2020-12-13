@@ -3,16 +3,18 @@ from selenium import webdriver
 import os
 from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
+from selenium.webdriver.common.keys import Keys
+
 
 
 def xpath(add):
     try:
-        time.sleep(10)
+        time.sleep(5)
         element = driver.find_element_by_xpath(add)
         element.click()
     except Exception as e:
         print(e)
-        time.sleep(10)
+        time.sleep(5)
         xpath(add)
 
 
@@ -28,10 +30,16 @@ while True:
         b_path = os.path.join(runingCodePath, r"Mozilla Firefox\firefox.exe")
         binary = FirefoxBinary(b_path)
         driver = webdriver.Firefox(firefox_binary=binary, executable_path=firefoxPath, service_log_path=os.path.devnull, options = options, firefox_profile=profile)
-        # driver = webdriver.Firefox(firefox_binary=binary, executable_path=firefoxPath, options=options, firefox_profile=profile, service_log_path=os.path.devnull)
-        url = "https://www.youtube.com/watch?v=jzJ5T_XAsh8&list=PLZ7TrNqkDzINrWIbJXUmIytq_AYvalYzj"
+        url = "https://www.google.co.in/"
         driver.get(url)
-        xpath('//button[@aria-label="Play"]')
+        time.sleep(5)
+        inputElement = driver.find_element_by_xpath('//input[@title="Search"]')
+        inputElement.send_keys('food art by ginny')
+        time.sleep(5)
+        inputElement.send_keys(Keys.RETURN)
+        xpath('//a[@href="https://www.youtube.com/c/foodartbyginny/search"]')
+        xpath('//paper-tab[contains(.,"Playlists")]')
+        xpath('//a[@title="All in One"]')
         for i in range(1, 60):
             print("running for last " + str(i) + " minutes")
             time.sleep(60)
