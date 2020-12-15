@@ -18,6 +18,15 @@ def xpath(add):
         xpath(add)
 
 
+def try_xpath(add):
+    try:
+        time.sleep(5)
+        element = driver.find_element_by_xpath(add)
+        element.click()
+    except Exception as e:
+        print(e)
+
+
 runingCodePath = os.path.split(os.path.realpath(__file__))[0]
 firefoxPath = os.path.join(runingCodePath, r"geckodriver-v0.27.0-win32\geckodriver.exe")
 
@@ -37,7 +46,8 @@ while True:
         inputElement.send_keys('food art by ginny')
         time.sleep(5)
         inputElement.send_keys(Keys.RETURN)
-        xpath('//a[@href="https://www.youtube.com/c/foodartbyginny/search"]')
+        try_xpath('//a[@href="https://www.youtube.com/c/foodartbyginny/search"]')
+        try_xpath('//a[@href="https://www.youtube.com/channel/UC91WbI8DEBdiZxPpFOxCk3A"]')
         xpath('//paper-tab[contains(.,"Playlists")]')
         xpath('//a[@title="All in One"]')
         for i in range(1, 180):
